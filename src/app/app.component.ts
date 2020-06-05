@@ -1,6 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 class Book {
@@ -14,8 +14,10 @@ class Book {
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
-  public books: FirebaseListObservable<Book[]>;
-  constructor(db: AngularFireDatabase) {
-      this.books = db.list('/books');
+  books: any[];
+
+  constructor(private firestore: AngularFirestore) {
+
+      this.books =this.firestore.collection("books").snapshotChanges();
   }
 }

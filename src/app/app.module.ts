@@ -2,8 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -24,8 +24,8 @@ const firebase = {
     ],
     imports: [
         BrowserModule,
-        AngularFireModule.initializeApp(firebase, 'test-e264c'),
-        AngularFireDatabaseModule
+        AngularFireModule.initializeApp(firebase ),
+        AngularFirestoreModule
     ],
     providers: [],
     bootstrap: [AppComponent]

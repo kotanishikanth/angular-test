@@ -1,5 +1,11 @@
 import { Component, VERSION } from '@angular/core';
-import { FirebaseDbService } from './firebase-db.service'
+
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
+
+class Book {
+    constructor(public title) { }
+}
 
 @Component({
   selector: 'my-app',
@@ -8,9 +14,8 @@ import { FirebaseDbService } from './firebase-db.service'
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
-  books:any[];
-
-  constructor(private firebaseService:FirebaseDbService){
-    this.books = firebaseService.getBooks();
+  public books: FirebaseListObservable<Book[]>;
+  constructor(db: AngularFireDatabase) {
+      this.books = db.list('/books');
   }
 }

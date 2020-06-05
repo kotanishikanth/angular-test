@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
-import { FirebaseDbService } from './firebase-db.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { AppComponent } from './app.component';
+import { HelloComponent } from './hello.component';
 
 const firebase = {
         apiKey: 'AIzaSyAaZ-zHSb8EcrEjeq3D3o1YAAQKeqAuUR8',
@@ -15,18 +14,20 @@ const firebase = {
         databaseURL: 'https://test-e264c.firebaseio.com',
         projectId: 'test-e264c',
         storageBucket: 'test-e264c.appspot.com',
-        messagingSenderId: '763399536402'
-    }
+        messagingSenderId: '75508826624'
+    };
 
 @NgModule({
-  imports: [ 
-    BrowserModule, 
-    FormsModule,
-    AngularFireModule.initializeApp(firebase, 'fcc-book-trading'),
-    AngularFireDatabaseModule
-  ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ],
-  providers: [FirebaseDbService]
+    declarations: [
+        AppComponent,
+        HelloComponent
+    ],
+    imports: [
+        BrowserModule,
+        AngularFireModule.initializeApp(firebase, 'test-e264c'),
+        AngularFireDatabaseModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,7 +4,7 @@
 </p>
 
 <ul>
-    <li *ngFor="let book of books ">
+    <li *ngFor="let book of books | async">
         <pre>{{ book | json }}</pre>
     </li>
 </ul>

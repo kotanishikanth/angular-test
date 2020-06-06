@@ -2,10 +2,9 @@ import { Component, VERSION } from '@angular/core';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { FirebaseDbService } from './firebase-db.service';
 
-class Book {
-    constructor(public title) { }
-}
+import {Book} from './firebase-db'
 
 @Component({
   selector: 'my-app',
@@ -14,25 +13,15 @@ class Book {
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
-  books: any[];
+  books: Book[];
 
-  constructor(private firestore: AngularFirestore) {
-      var x = this.firestore.collection("books");
-      //console.log(x);
-      // return ;
-      //var x = this.firestore.collection('books');
-      /*
-      this.firestore.collection("books").snapshotChanges()
+  constructor(private firebaseDbService: FirebaseDbService) {
+      
+
+      this.firebaseDbService.getBooks() // .payload.doc.data().name
+      .pipe(map(x => x.map(a => new Book(a) )))
         .subscribe(data => {
         console.log('Books');
-        console.log(data);
-        this.books = data
-      });*/
-
-      this.firestore.collection("books").snapshotChanges()
-      .pipe(map(x => x.map(a => a.payload.doc.data()['name']))) // .payload.doc.data().name
-        .subscribe(data => {
-        console.log('Books2');
         console.log(data);
         this.books = data
       });

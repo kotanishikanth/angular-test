@@ -8,6 +8,9 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
+import {FirebaseDbService} from './firebase-db.service'
+import {Book} from './firebase-db'
+
 const firebase = {
         apiKey: "AIzaSyAaZ-zHSb8EcrEjeq3D3o1YAAQKeqAuUR8",
         authDomain: "test-e264c.firebaseapp.com",
@@ -28,7 +31,8 @@ const firebase = {
         AngularFireModule.initializeApp(firebase ),
         AngularFirestoreModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [FirebaseDbService],
+    bootstrap: [AppComponent],
+    exports: []
 })
 export class AppModule { }

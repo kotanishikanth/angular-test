@@ -9,12 +9,13 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
 const firebase = {
-        apiKey: 'AIzaSyAaZ-zHSb8EcrEjeq3D3o1YAAQKeqAuUR8',
-        authDomain: 'test-e264c.firebaseapp.com',
-        databaseURL: 'https://test-e264c.firebaseio.com',
-        projectId: 'test-e264c',
-        storageBucket: 'test-e264c.appspot.com',
-        messagingSenderId: '75508826624'
+        apiKey: "AIzaSyAaZ-zHSb8EcrEjeq3D3o1YAAQKeqAuUR8",
+        authDomain: "test-e264c.firebaseapp.com",
+        databaseURL: "https://test-e264c.firebaseio.com",
+        projectId: "test-e264c",
+        storageBucket: "test-e264c.appspot.com",
+        messagingSenderId: "75508826624",
+        appId: "1:75508826624:web:eb2a4372e1312065774ee5"
     };
 
 @NgModule({

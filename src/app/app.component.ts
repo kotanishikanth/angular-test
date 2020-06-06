@@ -17,8 +17,15 @@ export class AppComponent  {
   books: any[];
 
   constructor(private firestore: AngularFirestore) {
-
-      this.books =this.firestore.collection("books").snapshotChanges();
+      var x = this.firestore.collection("books");
+      console.log(x);
+      // return ;
+      //var x = this.firestore.collection('books');
+      this.firestore.collection("books").snapshotChanges().subscribe(data => {
+        console.log(data);
+        this.books = data
+      });
   }
 }
+
 

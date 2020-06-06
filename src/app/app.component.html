@@ -5,6 +5,6 @@
 
 <ul>
     <li *ngFor="let book of books ">
-        <pre>{{ book | json }}</pre>
+        <pre>{{ book.payload.doc.data().name }}</pre>
     </li>
 </ul>

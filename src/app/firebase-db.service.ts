@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
-
-export class Book{
-  name:string;
-}
+import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class FirebaseDbService {
-  public books: AngularFireList<Book[]>;
-
-  constructor(db: AngularFireDatabase) {
-      this.books = db.list('/books');
+  
+  constructor(private firestore: AngularFirestore) {
   }
 
-  getBooks():any[]{
-    return [{name: 'One'}, {name:'Two'}];
+  getBooks(){
+    return this.firestore.collection("books").snapshotChanges()
+      .pipe(map(x => x.map(a => a.payload.doc.data()['name'])));
   }
 
 }

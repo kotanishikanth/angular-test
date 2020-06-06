@@ -18,7 +18,7 @@ export class AppComponent  {
   constructor(private firebaseDbService: FirebaseDbService) {
       
 
-      this.firebaseDbService.getBooks() // .payload.doc.data().name
+      this.firebaseDbService.getAll("books") // .payload.doc.data().name
       .pipe(map(x => x.map(a => new Book(a) )))
         .subscribe(data => {
         console.log('Books');
@@ -26,6 +26,15 @@ export class AppComponent  {
         this.books = data
       });
   }
+
+  createBook(){
+    this.firebaseDbService.create("books", {name: 'zGold'})
+    .then(res=> { 
+      console.log('created'); 
+      console.log(res); 
+    });
+  }
+
 }
 
 

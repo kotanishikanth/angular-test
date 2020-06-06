@@ -9,7 +9,8 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 
 import {FirebaseDbService} from './firebase-db.service'
-import {Book} from './firebase-db'
+import {Book} from './firebase-db';
+import { ModalComponent } from './modal/modal.component'
 
 const firebase = {
         apiKey: "AIzaSyAaZ-zHSb8EcrEjeq3D3o1YAAQKeqAuUR8",
@@ -24,7 +25,8 @@ const firebase = {
 @NgModule({
     declarations: [
         AppComponent,
-        HelloComponent
+        HelloComponent,
+        ModalComponent
     ],
     imports: [
         BrowserModule,

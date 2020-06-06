@@ -10,8 +10,17 @@ export class FirebaseDbService{
   constructor(private firestore: AngularFirestore) {
   }
 
-  getBooks(): Observable<any[]>{
-    return this.firestore.collection("books").snapshotChanges()
+  create(collectionName, data) {
+    return new Promise<any>((resolve, reject) =>{
+        this.firestore
+            .collection(collectionName)
+            .add(data)
+            .then(res => {}, err => reject(err));
+    });
+}
+
+  getAll(collectionName): Observable<any[]>{
+    return this.firestore.collection(collectionName).snapshotChanges()
       .pipe(map(x => x.map(a => a.payload.doc.data() )));
   }
 
